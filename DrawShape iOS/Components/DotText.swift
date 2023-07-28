@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct DotText: View {
-    @Binding var title : String
+    var data : Data
     var body: some View {
-        VStack{
-            Circle().fill(.green).frame(height: 12)
-            Text("\(title)").font(.system(size: 12)).padding(4)
+        ZStack{
+            VStack(spacing: 0){ 
+                Circle().fill( data.isActive ? .green : .gray ).frame(height: 16)
+                //Text("\(data.name)").font(.system(size: 10))
+            }
                  
-        }.padding(0)
+        }
     }
 }
 
 struct DotText_Previews: PreviewProvider {
     static var previews: some View {
-        DotText(title: .constant("Tarek"))
+        DotText(data: Datas.dataList[0])
     }
 }

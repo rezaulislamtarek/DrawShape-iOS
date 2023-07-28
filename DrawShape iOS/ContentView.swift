@@ -33,25 +33,7 @@ struct CCS : Shape{
                      endAngle: Angle(degrees: 360),
                      clockwise: false)
             
-            
-            //            p.addArc(center: CGPoint(x: rect.midX, y: rect.midY - 100),
-            //                     radius: 5,
-            //                     startAngle: Angle(degrees: 0),
-            //                     endAngle: Angle(degrees: 360),
-            //                     clockwise: false)
-            //
-            //            p.addArc(center: CGPoint(x: rect.midX, y: rect.midY + 100),
-            //                     radius: 5,
-            //                     startAngle: Angle(degrees: 0),
-            //                     endAngle: Angle(degrees: 360),
-            //                     clockwise: false)
-            //
-            //            p.addArc(center: CGPoint(x: rect.midX, y: rect.maxY),
-            //                     radius: 5,
-            //                     startAngle: Angle(degrees: 0),
-            //                     endAngle: Angle(degrees: 360),
-            //                     clockwise: false)
-            
+          
         }
     }
     
@@ -105,7 +87,7 @@ struct ContentView: View {
                 .frame(width: 100, height: 100)
                 .foregroundColor(.red)
                 .opacity(0.5)
-            //            Image("tarek").resizable().frame(width: 100 ,height: 100).clipShape(Circle())
+                        Image("tarek").resizable().frame(width: 100 ,height: 100).clipShape(Circle())
             
             
             
