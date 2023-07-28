@@ -16,28 +16,32 @@ struct Data : Identifiable{
 class Datas{
     static var dataList = [
         Data(name: "Tarek", isActive: true),
-        Data(name: "Tanvir", isActive: false), //2
+         //2
         
         Data(name: "Rana", isActive: true),
         Data(name: "Rakib", isActive: true),
         Data(name: "Shakib", isActive: true),
         Data(name: "Rabby", isActive: true), //4
         
-        Data(name: "Sumon", isActive: false),
+       
         Data(name: "Hasan", isActive: true),
         Data(name: "Faisal", isActive: true),
-        Data(name: "Khann", isActive: false),
         Data(name: "Anvir", isActive: true),
         Data(name: "Anvir", isActive: true), //6
         
-        Data(name: "Sumon", isActive: false),
+       
         Data(name: "Hasan", isActive: true),
         Data(name: "Faisal", isActive: true),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Khann", isActive: false),
+    
         Data(name: "Anvir", isActive: true),
         Data(name: "Anvir", isActive: true), //8
+        Data(name: "Tanvir", isActive: false),
+        Data(name: "Khann", isActive: false),
+        Data(name: "Khann", isActive: false),
+        Data(name: "Khann", isActive: false),
+        Data(name: "Sumon", isActive: false),
+        Data(name: "Khann", isActive: false),
+        Data(name: "Sumon", isActive: false),
     ]
 }
 
