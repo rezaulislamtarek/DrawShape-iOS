@@ -170,7 +170,7 @@ struct RadarView: View {
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: size)
                      
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotText(data:  dataList[index] ).position(points2[index])
+                       DotView(data:  dataList[index] ).position(points2[index])
                     }
                 }
                 
@@ -178,20 +178,19 @@ struct RadarView: View {
                     
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotText(data:  dataList[index] ).position(points2[index])
+                       DotView(data:  dataList[index] ).position(points2[index])
                     }
                     
                     let electronForCircel3 = size - 2
-                    
+
                     let points3 = getElectronsForSecondShells(center: center, radius: radiousForCircel3/2, electron: electronForCircel3)
                     
                     
                     ForEach(points3.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points3[index])
+                            DotView(data:  dataList[2] ).position(points3[index])
                             let x = points3[index].x
                             let y = points3[index].y + 17
                             Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
-                        
                     }
                     
                 }
@@ -200,7 +199,7 @@ struct RadarView: View {
                     
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotText(data:  dataList[index] ).position(points2[index])
+                       DotView(data:  dataList[index] ).position(points2[index])
                     }
                     
                     let electronForCircel3 = 4
@@ -208,7 +207,7 @@ struct RadarView: View {
                     
                     
                     ForEach(points3.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points3[index])
+                            DotView(data:  dataList[2] ).position(points3[index])
                             let x = points3[index].x
                             let y = points3[index].y + 17
                             Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
@@ -220,7 +219,7 @@ struct RadarView: View {
                     
                     
                     ForEach(points4.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points4[index])
+                            DotView(data:  dataList[2] ).position(points4[index])
                             let x = points4[index].x
                             let y = points4[index].y + 17
                             Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
@@ -231,7 +230,11 @@ struct RadarView: View {
                 else if size <= 20 {
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotText(data:  dataList[index] ).position(points2[index])
+                        let data = dataList[index]
+                        DotView(data:  dataList[index] ).position(points2[index])
+                        let x = points2[index].x
+                        let y = points2[index].y + 17
+                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel3 = 4
@@ -239,10 +242,11 @@ struct RadarView: View {
                     
                     
                     ForEach(points3.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points3[index])
+                        let data = dataList[index+2]
+                            DotView(data: data ).position(points3[index])
                             let x = points3[index].x
                             let y = points3[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
                     }
                     
                     
@@ -250,20 +254,22 @@ struct RadarView: View {
                     let points4 = getElectronsForThirdShells(center: center, radius: radiousForCircel4/2, electron: electronForCircel4)
                     
                     ForEach(points4.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points4[index])
+                        let data = dataList[index+6]
+                            DotView(data:  data ).position(points4[index])
                             let x = points4[index].x
                             let y = points4[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel5 = size - 12
                     let points5 = getElectronsForFourthShells(center: center, radius: radiousForCircel5/2, electron: electronForCircel5)
                     
                     ForEach(points5.indices, id: \.self ) { index in
-                            DotText(data:  dataList[2] ).position(points5[index])
+                        let data = dataList[index+12]
+                            DotView(data:  data ).position(points5[index])
                             let x = points5[index].x
                             let y = points5[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
                     }
                     
                     

@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct DotText: View {
+struct DotView: View {
     var data : Data
     var body: some View {
         ZStack{
             VStack(spacing: 0){ 
                 Circle().fill( data.isActive ? .green : .gray ).frame(height: 16)
-                //Text("\(data.name)").font(.system(size: 10))
             }
                  
         }
@@ -22,6 +21,6 @@ struct DotText: View {
 
 struct DotText_Previews: PreviewProvider {
     static var previews: some View {
-        DotText(data: Datas.dataList[0])
+        DotView(data: Datas.dataList[0])
     }
 }
