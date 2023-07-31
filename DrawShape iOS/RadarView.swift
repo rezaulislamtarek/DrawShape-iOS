@@ -15,33 +15,29 @@ struct Data : Identifiable{
 
 class Datas{
     static var dataList = [
-        Data(name: "Tarek", isActive: true),
-         //2
-        
-        Data(name: "Rana", isActive: true),
-        Data(name: "Rakib", isActive: true),
-        Data(name: "Shakib", isActive: true),
-        Data(name: "Rabby", isActive: true), //4
-        
-       
-        Data(name: "Hasan", isActive: true),
-        Data(name: "Faisal", isActive: true),
-        Data(name: "Anvir", isActive: true),
-        Data(name: "Anvir", isActive: true), //6
-        
-       
-        Data(name: "Hasan", isActive: true),
-        Data(name: "Faisal", isActive: true),
-    
-        Data(name: "Anvir", isActive: true),
-        Data(name: "Anvir", isActive: true), //8
-        Data(name: "Tanvir", isActive: false),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Sumon", isActive: false),
-        Data(name: "Khann", isActive: false),
-        Data(name: "Sumon", isActive: false),
+        Data(name: "Savvy", isActive: true),
+        Data(name: "Moneyboat", isActive: true),
+        Data(name: "Sainsbury's", isActive: false),
+       // Data(name: "Hitachi", isActive: true),
+        //Data(name: "SAAB Bank", isActive: true),
+      //  Data(name: "Ratesetter", isActive: true),
+       // Data(name: "Halifax", isActive: true),
+       // Data(name: "Anvir", isActive: true),
+ //       Data(name: "Anvir", isActive: true), //6
+//
+//
+//        Data(name: "Hasan", isActive: true),
+//        Data(name: "Faisal", isActive: true),
+//
+//        Data(name: "Anvir", isActive: true),
+//        Data(name: "Anvir", isActive: true), //8
+  //      Data(name: "Helal", isActive: false),
+    //    Data(name: "Belal", isActive: false),
+//        Data(name: "Khann", isActive: false),
+//        Data(name: "Khann", isActive: false),
+//        Data(name: "Sumon", isActive: false),
+//        Data(name: "Khann", isActive: false),
+   //     Data(name: "Sumon", isActive: false),
     ]
 }
 
@@ -122,7 +118,7 @@ struct RadarView: View {
     var body: some View {
         GeometryReader { gm in
             ZStack(alignment: .top){
-            
+                
                 let dif = (150/820) * gm.size.width
                 let width = CGFloat(gm.size.width)
                 let center = CGPoint(x: gm.size.width/2, y: gm.size.width/2)
@@ -149,7 +145,7 @@ struct RadarView: View {
                         .fill(.gray)
                         .frame(width: width, height: width)
                     
-                    Image("tarek").resizable().frame(width: 100 ,height: 100).clipShape(Circle())
+                    //Image("tarek").resizable().frame(width: 100 ,height: 100).clipShape(Circle())
                     
                 }
                 
@@ -164,7 +160,7 @@ struct RadarView: View {
                     
                     CircleView(center: center, radius: radiousForCircel2/2)
                     
-                    CircleView(center: center, radius: radiousForCircel1/2)
+                    HeavyStrokeCircleView(center: center, radius: radiousForCircel1/2,image: Image("tarek"))
                     
                 }
                 
@@ -172,9 +168,13 @@ struct RadarView: View {
                 
                 if size <= 2 {
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: size)
-                     
+                    
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotView(data:  dataList[index] ).position(points2[index])
+                        let data = dataList[index]
+                        DotView(isActive: data.isActive ).position(points2[index])
+                        let x = points2[index].x
+                        let y = points2[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                 }
                 
@@ -182,19 +182,24 @@ struct RadarView: View {
                     
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotView(data:  dataList[index] ).position(points2[index])
+                        let data = dataList[index]
+                        DotView(isActive: data.isActive ).position(points2[index])
+                        let x = points2[index].x
+                        let y = points2[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel3 = size - 2
-
+                    
                     let points3 = getElectronsForSecondShells(center: center, radius: radiousForCircel3/2, electron: electronForCircel3)
                     
                     
                     ForEach(points3.indices, id: \.self ) { index in
-                            DotView(data:  dataList[2] ).position(points3[index])
-                            let x = points3[index].x
-                            let y = points3[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        let data = dataList[index+2]
+                        DotView(isActive: data.isActive ).position(points3[index])
+                        let x = points3[index].x
+                        let y = points3[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                 }
@@ -203,7 +208,11 @@ struct RadarView: View {
                     
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
-                       DotView(data:  dataList[index] ).position(points2[index])
+                        let data = dataList[index]
+                        DotView(isActive: data.isActive ).position(points2[index])
+                        let x = points2[index].x
+                        let y = points2[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel3 = 4
@@ -211,10 +220,12 @@ struct RadarView: View {
                     
                     
                     ForEach(points3.indices, id: \.self ) { index in
-                            DotView(data:  dataList[2] ).position(points3[index])
-                            let x = points3[index].x
-                            let y = points3[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        let data = dataList[index + 2]
+                        DotView(isActive: data.isActive ).position(points3[index])
+                       
+                        let x = points3[index].x
+                        let y = points3[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     
@@ -223,10 +234,11 @@ struct RadarView: View {
                     
                     
                     ForEach(points4.indices, id: \.self ) { index in
-                            DotView(data:  dataList[2] ).position(points4[index])
-                            let x = points4[index].x
-                            let y = points4[index].y + 17
-                            Text("name").font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        let data = dataList[index+6]
+                        DotView(isActive: data.isActive ).position(points4[index])
+                        let x = points4[index].x
+                        let y = points4[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                 }
@@ -235,10 +247,10 @@ struct RadarView: View {
                     let points2 = pointsOnCircle(center: center, radius: radiousForCircel2/2, count: 2)
                     ForEach(points2.indices, id: \.self ) { index in
                         let data = dataList[index]
-                        DotView(data:  dataList[index] ).position(points2[index])
+                        DotView(isActive: data.isActive ).position(points2[index])
                         let x = points2[index].x
                         let y = points2[index].y + 17
-                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel3 = 4
@@ -247,10 +259,10 @@ struct RadarView: View {
                     
                     ForEach(points3.indices, id: \.self ) { index in
                         let data = dataList[index+2]
-                            DotView(data: data ).position(points3[index])
-                            let x = points3[index].x
-                            let y = points3[index].y + 17
-                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        DotView(isActive: data.isActive ).position(points3[index])
+                        let x = points3[index].x
+                        let y = points3[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     
@@ -259,10 +271,10 @@ struct RadarView: View {
                     
                     ForEach(points4.indices, id: \.self ) { index in
                         let data = dataList[index+6]
-                            DotView(data:  data ).position(points4[index])
-                            let x = points4[index].x
-                            let y = points4[index].y + 17
-                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        DotView(isActive: data.isActive ).position(points4[index])
+                        let x = points4[index].x
+                        let y = points4[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
                     
                     let electronForCircel5 = size - 12
@@ -270,14 +282,11 @@ struct RadarView: View {
                     
                     ForEach(points5.indices, id: \.self ) { index in
                         let data = dataList[index+12]
-                            DotView(data:  data ).position(points5[index])
-                            let x = points5[index].x
-                            let y = points5[index].y + 17
-                        Text(data.name).font(.system(size: 15)).position(CGPoint(x: x, y: y))
+                        DotView(isActive: data.isActive).position(points5[index])
+                        let x = points5[index].x
+                        let y = points5[index].y + 17
+                        TextView(text:  data.name).position(CGPoint(x: x, y: y))
                     }
-                    
-                    
-                    
                     
                 }
                 else {

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DotView: View {
-    var data : Data
+    var isActive : Bool
     var body: some View {
         ZStack{
             VStack(spacing: 0){ 
-                Circle().fill( data.isActive ? .green : .gray ).frame(height: 16)
-            }
+                Circle().fill( isActive ? .green : .gray ).frame(height: 14).padding(.all,2)
+            }.background(.white)
                  
         }
     }
@@ -21,6 +21,6 @@ struct DotView: View {
 
 struct DotText_Previews: PreviewProvider {
     static var previews: some View {
-        DotView(data: Datas.dataList[0])
+        DotView(isActive: false)
     }
 }

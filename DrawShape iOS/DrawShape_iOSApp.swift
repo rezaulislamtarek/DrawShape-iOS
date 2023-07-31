@@ -11,7 +11,7 @@ import SwiftUI
 struct DrawShape_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            RadarView().padding()
+            RadarView().padding(.all, 24)
         }
     }
 }
